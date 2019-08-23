@@ -1,13 +1,14 @@
 module.exports = {
-    role = "server", //server or client.
+    role: "server", //server or client
 
-
-    //change these
+    // SERVER 
     serverPort: 1234, //port from where to load the web page
 
-    clientMacAdress: "00:1E:4F:36:B3:0B",
-    clientReceivePort: 1234;
+    // CLIENT
+    clientMac: "00:1E:4F:36:B3:0B",
+    clientIP: "localhost",
+    clientReceivePort: 1235,
 
-    //should not change
-    broadcastAdress: "192.168.1.255",
+    //anything below this line should not be changed
+    broadcast: "192.168.1.255",
 }

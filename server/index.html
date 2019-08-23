@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Obelisk Management</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <h2>Obelisk Management</h2>
+    <button id="startButton">start server</button>
+    <button id="stopButton">stop server</button>
+    <button id="restartButton">restart server</button>
+    <script>
+        $("#startButton").click(function () {
+            $.post("start");
+        });
+        $("#stopButton").click(function () {
+            $.post("shutdown");
+        });
+        $("#restartButton").click(function () {
+            $.post("reboot");
+        });
+    </script>
+</body>
+
+</html>
