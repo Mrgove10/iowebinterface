@@ -1,14 +1,46 @@
+/**
+ * MAIN CONFIGURATION FILE
+ * The higher the option, the greater the chance you have to modify it
+ */
 module.exports = {
-    role: "server", //server or client
-
-    // SERVER 
+    /**
+     * role can be :
+     * server : the sender of the wake on lan resquests
+     * client : the receiver of the resquests
+     */
+    role: "server", 
+    /**
+     * Server (sender) configuration
+     */
+    activateWebPage: true, //if set to false not web page will show
     serverPort: 1234, //port from where to load the web page
 
-    // CLIENT
-    clientMac: "00:1E:4F:36:B3:0B",
-    clientIP: "localhost",
+    /**
+     * Client (reiciver) configuration
+     */
     clientReceivePort: 1235,
+    clientIP: "localhost",
+    clientMac: "00:1E:4F:36:B3:0B",
 
-    //anything below this line should not be changed
+    //TODO : implement
+    /*clients: [
+        {
+            clientReceivePort: 1235,
+            clientIP: "localhost",
+            clientMac: "00:1E:4F:36:B3:0B",
+        },
+        {
+            clientReceivePort: 1235,
+            clientIP: "localhost",
+            clientMac: "00:1E:4F:36:B3:0B"
+        },
+    ],*/
+    
+    /**
+     * Options below should not be changed in normal use
+     */
     broadcast: "192.168.1.255",
+    numberPackets: 5,
+    interval: 100,
+    port: 7
 }
