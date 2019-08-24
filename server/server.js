@@ -81,7 +81,7 @@ function shutDown() {
              }
          },*/
         console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
-        );
+       // );
     }
 }
 
