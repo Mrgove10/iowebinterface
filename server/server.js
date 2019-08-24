@@ -64,7 +64,7 @@ function wakeUp() {
         if (error) {
             console.error(error);
         } else {
-            console.info(getTimeConsole() + "Wake up successfully sent to " + config.clientIP + " (" + config.clientMac + ")");
+            console.info(getTimeConsole() + "Wake up successfully sent to " + config.clientIP + " (" + config.clientMac + "). Client should be starting up !");
         }
     });
 }
@@ -74,12 +74,13 @@ function wakeUp() {
  */
 function shutDown() {
     if (verrifyInstalled()) {
-        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown", (error) => {
-            if (error) {
-                console.error(error)
-            }
-        },
-            console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
+        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
+        /* request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown", (error) => {
+             if (error) {
+                 console.error(error)
+             }
+         },*/
+        console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
         );
     }
 }

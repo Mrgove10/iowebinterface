@@ -16,9 +16,8 @@
     <button id="startButton">start server</button>
     <button id="stopButton">stop server</button>
     <button id="restartButton">restart server</button>
-    <div id="console-log-div" class="console-log-div"></div>
-    </div>
-    <script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+    <img
+        src="http://ahr.duckdns.org:8081/api/v1/badge.svg?chart=system.ipc_semaphores&label=status&dimensions=semaphores&units=updown" />
     <script>
         $("#startButton").click(function () {
             $.post("start");
@@ -30,15 +29,6 @@
             $.post("reboot");
         });
     </script>
-    <style>
-        .console-log-div {
-            border: 1px solid gray;
-            padding: 5px 10px;
-            border-radius: 5px;
-            width: 95% !important;
-            background-color: #efefef;
-        }
-    </style>
 </body>
 
 </html>
