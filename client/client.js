@@ -4,6 +4,7 @@
 const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
 const exec = require('child_process').exec; // console execution
+const pjson = require('../package.json');
 
 const app = express(); //create the express app
 
@@ -13,11 +14,11 @@ const app = express(); //create the express app
 app.get('/', function (req, res) {
     res.json(
         {
-            IOWIInstalled: true
+            iowinstalled: true,
+            version : pjson.version
         }
     )
 })
-
 
 /**
  * A POST request to this adress will instantiace a shutdown
@@ -43,20 +44,16 @@ app.listen(config.clientReceivePort, () => console.log(`Example app listening on
  * Ask a shutdown from the client
  */
 function askShutdown() {
-    console.warn(getTimeConsole() + "Shutting down in 10 seconds")
-    setTimeout(function () {
-        exec('shutdown now');
-    }, 10000);
+    console.warn(getTimeConsole() + "Shutting down");
+    exec('shutdown now');
 }
 
 /**
  * Ask a reboot from the client
  */
 function askReboot() {
-    console.warn(getTimeConsole() + "Rebooting in 10 seconds")
-    setTimeout(function () {
-        exec('reboot now');
-    }, 10000);
+    console.warn(getTimeConsole() + "Rebooting");
+    exec('reboot now');
 }
 
 /**

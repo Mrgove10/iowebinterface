@@ -6,6 +6,7 @@ const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
 const request = require('request'); // Request library
 const path = require('path'); // Path library
+const pjson = require('../package.json');
 
 const app = express(); //create the express app
 
@@ -106,21 +107,27 @@ function verrifyInstalled() {
     console.info(getTimeConsole() + "Checking for install on " + config.clientMac)
     request.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/", (error, res, body) => {
         if (error) {
-            console.error("Error communicating whit the server, stoping !");
+            console.error(getTimeConsole() + "Error communicating whit the server, stoping !");
             //console.error(error)
         }
         else {
             var parsedbody = JSON.parse(body);
-            if (parsedbody.IOWIInstalled == true) {
-                console.info("Installation detected, continuing !");
-                return true;
+
+            if (parsedbody.iowinstalled == true) { // Verifies that the client is installed correctly
+                if (parsedbody.version == pjson.version) { // Verrifies that the client is up to date
+                    console.info(getTimeConsole() + "Installation is detected and up to date, continuing !");
+                    return true;
+                }
+                else {
+                    console.info(getTimeConsole() + "Installation is detected but not up to date please update the client, stoping !");
+                    return false;
+                }
             }
             else {
-                console.info("Installation not detected, stoping !");
+                console.info(getTimeConsole() + "Installation not detected, stoping !");
                 return false;
             }
         }
-
     });
 }
 
