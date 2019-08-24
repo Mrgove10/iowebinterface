@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 /**
  * A POST request to this adress will instantiace a shutdown
  */
-app.get('/shutdown', function (req, res) {
+app.post('/shutdown', function (req, res) {
     console.info("\n" + getTimeConsole() + "Shutdown requested");
     askShutdown();
 })

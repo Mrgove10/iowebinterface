@@ -4,7 +4,7 @@
 const wol = require('wake_on_lan'); // Wake On Lan library
 const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
-const https = require('https'); // Http library
+const http = require('http'); // Http library
 const path = require('path'); // Path library
 const pjson = require('../package.json'); // Package.json reference
 
@@ -35,7 +35,8 @@ app.post('/start', function (req, res) {
  */
 app.post('/shutdown', function (req, res) {
     console.info("\n" + getTimeConsole() + "Shutdown requested");
-    shutDown();
+    verrifyInstalled(shutDown());
+    //  shutDown();
 });
 
 /**
@@ -43,7 +44,7 @@ app.post('/shutdown', function (req, res) {
  */
 app.post('/reboot', function (req, res) {
     console.info("\n" + getTimeConsole() + "Reboot requested");
-    reBoot();
+    verrifyInstalled(reBoot());
 });
 
 /**
@@ -73,52 +74,53 @@ function wakeUp() {
  * This will call the "/shutdown" url on the client 
  */
 function shutDown() {
-    if (verrifyInstalled()) {
-        https.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
-        console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
-    }
+    http.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
+    console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + ":" + config.clientReceivePort + " (" + config.clientMac + ")");
 }
 
 /**
  * This will call the "/reboot" url on the client 
  */
 function reBoot() {
-    if (verrifyInstalled()) {
-        https.post(("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
-        console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
-    }
+    http.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
+    console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")");
 }
 
 /**
  * Verrifies if the software is correctly installed on the client and that the version is the same on the client and on the server
+ * @param {*} callback 
  */
-function verrifyInstalled() {
-    //TODO : ADD VERSISION COMPARAISON
-    console.info(getTimeConsole() + "Checking for install on " + config.clientIP + " (" + config.clientMac + ")")
-    request.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/", (error, res, body) => {
-        if (error) {
-            console.error(getTimeConsole() + "Error communicating whit the server, stoping !");
-            //console.error(error)
-        }
-        else {
-            var parsedbody = JSON.parse(body);
-
+function verrifyInstalled(callback) {
+    console.info(getTimeConsole() + "Checking for install on " + config.clientIP + " (" + config.clientMac + ")");
+    http.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/", (resp) => {
+        let data = '';
+        // A chunk of data has been recieved.
+        resp.on('data', (chunk) => {
+            data += chunk;
+        });
+        // The whole response has been received.
+        resp.on('end', () => {
+            var parsedbody = JSON.parse(data);
             if (parsedbody.iowinstalled == true) { // Verifies that the client is installed correctly
                 if (parsedbody.version == pjson.version) { // Verrifies that the client is up to date
                     console.info(getTimeConsole() + "Installation is detected and up to date, continuing !");
-                    return true;
+                    callback;
                 }
                 else {
                     console.info(getTimeConsole() + "Installation is detected but not up to date please update the client, stoping !");
-                    return false;
+                    return;
                 }
             }
             else {
                 console.info(getTimeConsole() + "Installation not detected, stoping !");
-                return false;
+                return;
             }
-        }
+        });
+    }).on("error", (err) => {
+        console.error(getTimeConsole() + "Error communicating whit the server, stoping !");
+        return;
     });
+
 }
 
 /**
