@@ -19,7 +19,7 @@ module.exports = {
      * Client (reiciver) configuration
      */
     clientReceivePort: 1235,
-    clientIP: "localhost",
+    clientIP: "192.168.1.13",
     clientMac: "00:1E:4F:36:B3:0B",
 
     //TODO : implement

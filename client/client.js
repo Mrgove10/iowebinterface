@@ -3,10 +3,10 @@
  */
 const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
-const exec = require('child_process').exec; // console execution
-const pjson = require('../package.json');
+const exec = require('child_process').exec; // Console execution
+const pjson = require('../package.json'); // Package.json reference
 
-const app = express(); //create the express app
+const app = express(); // Create the express app
 
 /**
  * A POST request to this adress will instantiace a shutdown

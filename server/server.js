@@ -6,7 +6,7 @@ const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
 const request = require('request'); // Request library
 const path = require('path'); // Path library
-const pjson = require('../package.json');
+const pjson = require('../package.json'); // Package.json reference
 
 const app = express(); //create the express app
 
@@ -49,7 +49,7 @@ app.post('/reboot', function (req, res) {
 /**
  * This will listen to the configured port for any incomming requests
  */
-app.listen(config.serverPort, () => console.log(getTimeConsole() + `IO Web Interface is acceessible on host:${config.serverPort}!`))
+app.listen(config.serverPort, () => console.log(getTimeConsole() + `IO Web Interface is acceessible on localhost:${config.serverPort}!`))
 
 /**
  * This will actuvate a Wake On Lan request to the client 
@@ -64,7 +64,7 @@ function wakeUp() {
         if (error) {
             console.error(error);
         } else {
-            console.info(getTimeConsole() + "Wake up successfully sent to " + config.clientMac);
+            console.info(getTimeConsole() + "Wake up successfully sent to " + config.clientIP + " (" + config.clientMac + ")");
         }
     });
 }
@@ -79,7 +79,7 @@ function shutDown() {
                 console.error(error)
             }
         },
-            console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientMac)
+            console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
         );
     }
 }
@@ -94,7 +94,7 @@ function reBoot() {
                 console.error(error)
             }
         },
-            console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientMac)
+            console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
         );
     }
 }
@@ -104,7 +104,7 @@ function reBoot() {
  */
 function verrifyInstalled() {
     //TODO : ADD VERSISION COMPARAISON
-    console.info(getTimeConsole() + "Checking for install on " + config.clientMac)
+    console.info(getTimeConsole() + "Checking for install on " + config.clientIP + " (" + config.clientMac + ")")
     request.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/", (error, res, body) => {
         if (error) {
             console.error(getTimeConsole() + "Error communicating whit the server, stoping !");
