@@ -4,7 +4,7 @@
 const wol = require('wake_on_lan'); // Wake On Lan library
 const express = require('express'); // Express
 const config = require('../conf.js'); // Configuration file
-const request = require('request'); // Request library
+const https = require('https'); // Http library
 const path = require('path'); // Path library
 const pjson = require('../package.json'); // Package.json reference
 
@@ -74,7 +74,7 @@ function wakeUp() {
  */
 function shutDown() {
     if (verrifyInstalled()) {
-        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
+        https.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
         console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
     }
 }
@@ -84,7 +84,7 @@ function shutDown() {
  */
 function reBoot() {
     if (verrifyInstalled()) {
-        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
+        https.post(("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
         console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
     }
 }

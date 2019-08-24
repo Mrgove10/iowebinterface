@@ -1,6 +1,6 @@
 {
   "name": "iowebinterface",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "Wake On Lan web interface",
   "main": "main.js",
   "scripts": {
@@ -12,7 +12,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "ping": "^0.2.2",
-    "request": "^2.88.0",
     "wake_on_lan": "^1.0.0"
   }
 }
