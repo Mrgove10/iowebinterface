@@ -75,13 +75,7 @@ function wakeUp() {
 function shutDown() {
     if (verrifyInstalled()) {
         request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
-        /* request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown", (error) => {
-             if (error) {
-                 console.error(error)
-             }
-         },*/
         console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
-       // );
     }
 }
 
@@ -90,13 +84,8 @@ function shutDown() {
  */
 function reBoot() {
     if (verrifyInstalled()) {
-        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot", (error) => {
-            if (error) {
-                console.error(error)
-            }
-        },
-            console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
-        );
+        request.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
+        console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")")
     }
 }
 

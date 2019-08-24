@@ -8,7 +8,8 @@ module.exports = {
      * server : the sender of the wake on lan resquests
      * client : the receiver of the resquests
      */
-    role: "server", 
+    role: "server",
+    
     /**
      * Server (sender) configuration
      */

@@ -11,13 +11,12 @@
 <body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
     <h2>Obelisk Management</h2>
     <button id="startButton">start server</button>
     <button id="stopButton">stop server</button>
     <button id="restartButton">restart server</button>
-    <img
-        src="http://ahr.duckdns.org:8081/api/v1/badge.svg?chart=system.ipc_semaphores&label=status&dimensions=semaphores&units=updown" />
+    <br />
+    <iframe src="http://ahr.duckdns.org:8081"></iframe>
     <script>
         $("#startButton").click(function () {
             $.post("start");
