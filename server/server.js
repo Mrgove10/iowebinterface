@@ -8,7 +8,7 @@ const request = require('request'); // Request library
 const path = require('path'); // Path library
 const pjson = require('../package.json'); // Package.json reference
 
-const app = express(); //create the express app
+const app = express(); // Create the express app
 
 /**
  * Main page of the server

@@ -9,6 +9,7 @@
   "author": "Adrien R",
   "license": "MIT",
   "dependencies": {
+    "console-log-div": "^0.6.3",
     "express": "^4.17.1",
     "ping": "^0.2.2",
     "request": "^2.88.0",

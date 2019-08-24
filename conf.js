@@ -22,20 +22,6 @@ module.exports = {
     clientIP: "192.168.1.13",
     clientMac: "00:1E:4F:36:B3:0B",
 
-    //TODO : implement
-    /*clients: [
-        {
-            clientReceivePort: 1235,
-            clientIP: "localhost",
-            clientMac: "00:1E:4F:36:B3:0B",
-        },
-        {
-            clientReceivePort: 1235,
-            clientIP: "localhost",
-            clientMac: "00:1E:4F:36:B3:0B"
-        },
-    ],*/
-    
     /**
      * Options below should not be changed in normal use
      */
