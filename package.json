@@ -1,6 +1,6 @@
 {
   "name": "iowebinterface",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Wake On Lan web interface",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,6 @@
   "repository": "https://github.com/Mrgove10/iowebinterface/",
   "dependencies": {
     "express": "^4.17.1",
-    "ping": "^0.2.2",
     "wake_on_lan": "^1.0.0"
   }
 }

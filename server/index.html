@@ -8,13 +8,14 @@
     <title>Obelisk Management</title>
 </head>
 
-<body>
+<body style="text-align: center">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ad3201eff3.js"></script>
     <h2>Obelisk Management</h2>
-    <button id="startButton">start server</button>
-    <button id="stopButton">stop server</button>
-    <button id="restartButton">restart server</button>
+    <button id="startButton"><i class="fas fa-toggle-on"></i> Start</button>
+    <button id="stopButton"><i class="fas fa-toggle-off"></i> Stop</button>
+    <button id="restartButton"><i class="fas fa-sync"></i> Restart</button>
     <br />
     <iframe src="http://ahr.duckdns.org:8081"></iframe>
     <script>
@@ -29,5 +30,11 @@
         });
     </script>
 </body>
+<style>
+    iframe {
+        width: 95vw;
+        height: 95vh;
+    }
+</style>
 
 </html>
