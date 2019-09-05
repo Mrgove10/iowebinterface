@@ -1,6 +1,6 @@
 {
   "name": "iowebinterface",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Wake On Lan web interface",
   "main": "main.js",
   "scripts": {

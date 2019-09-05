@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 /**
  * A POST request to this adress will instantiace a shutdown
  */
-app.post('/shutdown', function (req, res) {
+app.get('/shutdown', function (req, res) {
     console.info("\n" + getTimeConsole() + "Shutdown requested");
     askShutdown();
 })
@@ -31,7 +31,7 @@ app.post('/shutdown', function (req, res) {
 /**
  * A POST request to this adress will instantiace a reboot
  */
-app.post('/reboot', function (req, res) {
+app.get('/reboot', function (req, res) {
     console.info("\n" + getTimeConsole() + "Reboot requested");
     askReboot();
 })

@@ -9,7 +9,7 @@ module.exports = {
      * client : the receiver of the resquests
      */
     role: "server",
-    
+
     /**
      * Server (sender) configuration
      */

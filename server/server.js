@@ -73,7 +73,7 @@ function wakeUp() {
  * This will call the "/shutdown" url on the client 
  */
 function shutDown() {
-    http.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
+    http.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/shutdown");
     console.info(getTimeConsole() + "Shutdown successfully sent to " + config.clientIP + ":" + config.clientReceivePort + " (" + config.clientMac + ")");
 }
 
@@ -81,7 +81,7 @@ function shutDown() {
  * This will call the "/reboot" url on the client 
  */
 function reBoot() {
-    http.post("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
+    http.get("http://" + config.clientIP + ":" + config.clientReceivePort + "/reboot");
     console.info(getTimeConsole() + "Reboot successfully sent to " + config.clientIP + " (" + config.clientMac + ")");
 }
 
