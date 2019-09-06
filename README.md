@@ -31,8 +31,8 @@ Notmal installation, here we use [pm2](http://pm2.keymetrics.io/) to start the n
 
 You cna also manualy start both sides :
 
-```$ node client/client.js```
-```$ node server/server.js```
+- ```$ node client/client.js```
+- ```$ node server/server.js```
 
 ## Extra configuration
 
