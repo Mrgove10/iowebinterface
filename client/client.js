@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
     res.json(
         {
             iowinstalled: true,
-            version : pjson.version
+            version: pjson.version
         }
     )
 })

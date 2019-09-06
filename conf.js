@@ -11,17 +11,17 @@ module.exports = {
     role: "server",
 
     /**
+    * Client (reiciver) configuration
+    */
+    clientReceivePort: 1235,
+    clientIP: "192.168.1.13",
+    clientMac: "00:1E:4F:36:B3:0B",
+
+    /**
      * Server (sender) configuration
      */
     activateWebPage: true, //if set to false not web page will show
     serverPort: 1234, //port from where to load the web page
-
-    /**
-     * Client (reiciver) configuration
-     */
-    clientReceivePort: 1235,
-    clientIP: "192.168.1.13",
-    clientMac: "00:1E:4F:36:B3:0B",
 
     /**
      * Options below should not be changed in normal use

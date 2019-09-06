@@ -16,6 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ad3201eff3.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--TODO: Change me-->
     <h2>Obelisk Management</h2>
     <button id="startButton" class="btn btn-success">
@@ -33,13 +34,72 @@
     <iframe src="http://ahr.duckdns.org:8081"></iframe>
     <script>
         $("#startButton").click(function () {
-            $.post("start");
+            swal({
+                title: "Start the client ?",
+                text: "Once confirmed please wait a few minutes for the client to boot",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((start) => {
+                if (start) {
+                    $.post("start");
+                    swal({
+                        text: "Client Wake on Lan request sent !",
+                        icon: "success",
+                    });
+                } else {
+                    swal({
+                        text: "Canceled, client is not starting.",
+                        icon: "warning",
+                    });
+                }
+            });
+
         });
         $("#stopButton").click(function () {
-            $.post("shutdown");
+            swal({
+                title: "Stop the client ?",
+                text: "Once confirmed the client will shut down",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((stop) => {
+                if (stop) {
+                    $.post("shutdown");
+                    swal({
+                        text: "Client shutdown request sent !",
+                        icon: "success",
+                    });
+                } else {
+                    swal({
+                        text: "Canceled, will not shutdown.",
+                        icon: "warning",
+                    });
+                }
+            });
         });
         $("#restartButton").click(function () {
-            $.post("reboot");
+
+            swal({
+                title: "Restart the client ?",
+                text: "Once confirmed the client will shut down",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((restart) => {
+                if (restart) {
+                    $.post("reboot");
+                    swal({
+                        text: "Client restart request sent !",
+                        icon: "success",
+                    });
+                } else {
+                    swal({
+                        text: "Canceled, will not restart.",
+                        icon: "warning",
+                    });
+                }
+            });
         });
     </script>
     <!--Bootstrap-->
