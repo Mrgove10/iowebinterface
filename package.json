@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": "https://github.com/Mrgove10/iowebinterface/",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "wake_on_lan": "^1.0.0"
   }
 }
